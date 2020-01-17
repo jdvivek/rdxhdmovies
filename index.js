@@ -31,10 +31,18 @@ app.get("/", function(req, res) {
 app.get("/lion", function(req, res) {
     res.sendFile(process.cwd() + '/lion.html');
 });
+app.get("/proxyserver", function(req, res) {
+
+        //res.status(200).send("hello");
+    res.sendFile(process.cwd() + '/proxyserver.html');
+});
+
 app.get("/lion.js", function(req, res) {
     res.sendFile(process.cwd() + '/lion.js');
 });
-
+app.get("/proxyserver.js", function(req, res) {
+    res.sendFile(process.cwd() + '/proxyserver.js');
+});
 
 var server = app.listen(8081, function() {
     var host = server.address().address;
