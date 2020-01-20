@@ -5,6 +5,7 @@ var movieframeId = 'myframe';
 var apiDoamin = "https://rdxhdmovies.jdvivek.repl.co";
 var parentWebsite = "";
 var fameloadercounter = 0;
+var  hasPost=false;
 
 /*Html function and events*/
 
@@ -15,15 +16,19 @@ function onMyFrameLoad(frame) {
     console.clear();
     console.log(frame);
     //remove links
-    document.getElementById("myframe").style.display = "none";
-    document.getElementById("loadingCenter").style.display = "block";
+    document.getElementById(movieframeId).style.display = hasPost==false? "none":"block";
+    document.getElementById("loadingCenter").style.display =hasPost==false? "block":"none";
     $(frame.contentDocument).ready(function(state) {
 
+
+      
+        //check if website is using any post service for block
+        hasPost= SendPostToBlockWebiste();
 
         //make visible
         fameloadercounter++;
         if (fameloadercounter == 2) {
-            document.getElementById("myframe").style.display = "block";
+            document.getElementById(movieframeId).style.display = "block";
             document.getElementById("loadingCenter").style.display = "none";
             fameloadercounter = 0;
             RemoveLinksOpenInAnotherTab();
@@ -46,6 +51,26 @@ function onMyFrameLoad(frame) {
 
 
 /*UTLITY FUNCTIONS*/
+
+function SendPostToBlockWebiste()
+{
+
+        //check if website is using any post service for block
+        if(document.getElementById(movieframeId).contentWindow.document.getElementsByTagName("form").length>0 && document.getElementById(movieframeId).contentWindow.document.getElementsByTagName("form")[0].action.indexOf(apiDoamin)!=-1)
+        {
+         document.getElementById(movieframeId).contentWindow.document.getElementsByTagName("form")[0].action=document.getElementById(movieframeId).contentWindow.document.getElementsByTagName("form")[0].action.replace(apiDoamin,    parentWebsite)
+       
+       document.getElementById("blockwebsiteLink").href=document.getElementById(movieframeId).contentWindow.document.getElementsByTagName("form")[0].action.replace(apiDoamin,    parentWebsite);
+       document.getElementById('blockwebsiteLink').click();
+      
+         return true;
+        }
+        else
+        {
+          return false;
+
+        }
+}
 
 function extractHostname(url) {
     var hostname;

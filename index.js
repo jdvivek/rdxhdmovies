@@ -1,5 +1,8 @@
 var express = require("express");
 var request = require("request");
+const axios = require('axios')
+
+
 
 var app = express();
 
@@ -28,6 +31,12 @@ app.get("/", function(req, res) {
         }
     );
 });
+
+app.post("/", function (req, res) {
+ 
+//NEED TO B HANDLE POST SO SUCH WEBSITE CAN WORK https://yifymovies.tv/
+
+});
 app.get("/lion", function(req, res) {
     res.sendFile(process.cwd() + '/lion.html');
 });
@@ -43,6 +52,9 @@ app.get("/lion.js", function(req, res) {
 app.get("/proxyserver.js", function(req, res) {
     res.sendFile(process.cwd() + '/proxyserver.js');
 });
+
+
+
 
 var server = app.listen(8081, function() {
     var host = server.address().address;
