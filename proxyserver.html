@@ -24,6 +24,10 @@ iframe
  overflow-y: auto; 
  overflow-x: hidden;
 }
+a[href=''] {
+   display:none;
+}
+
 </style>
 <script>
 
@@ -36,17 +40,24 @@ var url = new URL(window.location.href);
 var searchurl = url.searchParams.get("url");
 parentWebsite=extractHostname(searchurl);
 var moviesiteurl=apiDoamin+'/?url='+searchurl
-document.getElementById('myframe').src=moviesiteurl;
+document.getElementById(movieframeId).src=moviesiteurl;
 
 });
 
 </script>
 </head>
 <body>
-   <center id="loadingCenter"> <h1>Loading Content...</h1></center>
- <iframe  name="lionframe"   id="myframe" frameborder="0"   marginheight="0"    marginwidth="0"  seamless="seamless"  scrolling="auto" width="100%" height="100%" src="" onload="onMyFrameLoad(this)"  sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-same-origin allow-scripts" style="display:none;"></iframe> 
+   <center> <h1 id="loadingCenter">Loading Content...</h1>
+     
+<a id="blockwebsiteLink"  style="display:none" onclick="ReloadIframe(event)"  target="_blank" href="#">The website is Blocked By Third Party Please Click Here And Load Website Into Another Tab (Wait 5 Seconds there ) and Then Click Here Again.
+</a>
+</center>
+   
 
-<a id="blockwebsiteLink"  target="_blank"></a>
+
+ <iframe  name="lionframe"   id="proxyserverIframe" frameborder="0"   marginheight="0"    marginwidth="0"  seamless="seamless"  scrolling="auto" width="100%" height="100%" src="" onload="onMyFrameLoad(this)"  sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-same-origin allow-scripts" onerror="alert('Failed')" style="display:none;">
+   <p>error</p>
+   </iframe> 
 
 
 </body>

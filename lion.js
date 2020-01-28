@@ -1,7 +1,7 @@
 /*VARIABLES*/
 
 //set frame id
-var movieframeId='myframe';
+var movieframeId='proxyserverIframe';
 
 
 /*Html function and events*/
@@ -15,7 +15,7 @@ function onMyFrameLoad(frame) {
    //remove links
 RemoveLinksOpenInAnotherTab();
 //make visible
-document.getElementById("myframe").style.display="block";
+document.getElementById(movieframeId).style.display="block";
 setInterval(function(){ 
   
    window['FWVc9MragE']=false; 

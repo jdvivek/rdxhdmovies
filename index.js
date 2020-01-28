@@ -1,8 +1,9 @@
 var express = require("express");
 var request = require("request");
-const axios = require('axios')
-
-
+var http = require("http");
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: true });
+var requestify = require('requestify'); 
 
 var app = express();
 
@@ -32,9 +33,21 @@ app.get("/", function(req, res) {
     );
 });
 
-app.post("/", function (req, res) {
+app.post("/", urlencodedParser, function (req, res) {
  
 //NEED TO B HANDLE POST SO SUCH WEBSITE CAN WORK https://yifymovies.tv/
+requestify.post("https://yifymovies.tv/", req.body).then(function(response) {
+    console.log(response);
+    //app.res.render('master',response);
+     res.status(200).send(response);
+     console.log("succes");
+}).fail(function(err) {
+    // add code here to handle error and/or debug reason for error
+ console.log(err)
+ console.log("error");
+
+}).done();
+
 
 });
 app.get("/lion", function(req, res) {
