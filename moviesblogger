@@ -1,0 +1,99 @@
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<!-- Clear Page Start-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  document.getElementsByTagName('body')[0].innerHTML=document.getElementsByClassName("post-body")[0].innerHTML;
+   document.getElementById('defaultMovieLink').click();
+
+});
+
+  function startMovie(element)
+ {
+         //make active or inactive
+         $(".movieLink").removeClass("active");
+         $(element).addClass("active");
+
+        $("#movieloadingspinner").show();
+
+ }
+  
+
+ function onMovieFrameLoad()
+ {
+           $("#movieloadingspinner").hide();
+ }
+  
+
+
+</script>
+<style>
+#movieframe
+{
+height:900px;
+}
+.customBtn
+{
+cursor:pointer;
+}
+.customheadingMovie
+{
+font-size: 18px;
+    font-family: montserrat;
+    font-weight: 400;
+    display: inline-block;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    background: #79c142;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+float:left;
+}
+.homebutton
+{
+font-size: 18px;
+    font-family: montserrat;
+    font-weight: 400;
+    display: inline-block;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+
+float:left;
+}
+</style>
+
+<br />
+<center>
+<a class="movieLink btn btn-default customBtn homebutton" href="https://www.topawesomethings.com/" style="float: left;" title="Go To Home Page (https://www.topawesomethings.com/)">Home</a>
+<span class="customheadingMovie" title="This Website Works Fine in Google Chrome Browser, Chrome Browser is recommended For this Website, So Please Install Google Chrome and open it in Google Chrome Browser.">All Movies</span>
+
+
+
+<a class="movieLink btn btn-default active customBtn" href="https://www.topawesomethings.com/p/movie1.html" id="defaultMovieLink" onclick="startMovie(this)" target="movieframe" title="This Website Works Fine in Google Chrome Browser, Chrome Browser is recommended For this Website, So Please Install Google Chrome and open it in Google Chrome Browser.">Hindi</a>
+<a class="movieLink btn btn-default customBtn" href="https://www.topawesomethings.com/p/englishmovie.html" onclick="startMovie(this)" target="movieframe" title="This Website Works Fine in Google Chrome Browser, Chrome Browser is recommended For this Website, So Please Install Google Chrome and open it in Google Chrome Browser.">English</a>
+
+<a class="movieLink btn btn-default customBtn" href="https://amzn.to/2GtwRZA" target="_Blank" title="Get 70% Pecentage Discount on Amazon by Using Shopping With Us. It Will open new tab for shopping on amazon.">70% Discount on Amazon Sale</a>
+
+<a class="movieLink btn btn-default customBtn" href="https://www.topawesomethings.com/p/hindimovie.html" onclick="startMovie(this)" style="display: none;" target="movieframe">Hindi 2</a>
+<a class="movieLink btn btn-default customBtn" href="https://www.topawesomethings.com/p/movie2.html" onclick="startMovie(this)" style="display: none;" target="movieframe">English 2</a>
+
+</center>
+<hr />
+<center>
+<h3 id="movieloadingspinner">
+Loading...</h3>
+<iframe frameborder="0" id="movieframe" marginheight="0" marginwidth="0" name="movieframe" onload="onMovieFrameLoad(this)" scrolling="auto" seamless="seamless" width="100%">></iframe>
+</center>
+<center>
+<b style="font-size: medium;"><br /></b><span style="font-size: small;"></span><b style="font-size: medium;">
+<span style="color: #0b5394;">
+Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties. We have just embedded websites.
+</span></b><br />
+</center>
+</div>
